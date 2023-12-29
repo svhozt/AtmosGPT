@@ -24,7 +24,7 @@ To install AtmosGPT, follow these steps:
 
 1. **Clone the Repository:**
    ```
-   git clone https://github.com/yourusername/AtmosGPT.git
+   git clone https://github.com/svhozt/AtmosGPT.git
    cd AtmosGPT
    ```
 
