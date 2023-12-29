@@ -1,0 +1,91 @@
+version: '3.8'
+
+services:
+  postgres:
+    build:
+      context: ./Postgresql
+      dockerfile: Dockerfile
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+  ttn_handler:
+    build:
+      context: ./Things_network_handler
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    environment:
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      APPLICATION_ID: ${APPLICATION_ID}
+      TENANT_ID: ${TENANT_ID}
+      ACCESS_KEY: ${ACCESS_KEY}
+      MQTT_SERVER: ${MQTT_SERVER}
+
+  postgis_handler:
+    build:
+      context: ./Postgis_handler
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    environment:
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+
+  geoserver:
+    build:
+      context: ./geoserver
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - ttn_handler
+    volumes:
+      - geoserver_data:/opt/geoserver_data
+
+  neo4j:
+    build:
+      context: ./GraphQL
+      dockerfile: Dockerfile
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      NEO4J_AUTH: ${NEO4J_AUTH}
+    volumes:
+      - ./GraphQL/Data:/data
+
+  graphql_handler:
+    build:
+      context: ./Graphql_handler
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+      - ttn_handler
+      - neo4j
+    environment:
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      NEO4J_URI: ${NEO4J_URI}
+      NEO4J_USER: ${NEO4J_USER}
+      NEO4J_PASSWORD: ${NEO4J_PASSWORD}
+
+volumes:
+  postgres_data:
+  geoserver_data:

@@ -1,0 +1,16 @@
+<layer>
+  <name>cycleways</name>
+  <id>LayerInfoImpl--7eaa08ab:18c53219bbe:-7ff4</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--570ae188:124761b8d78:-7fe3</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--7eaa08ab:18c53219bbe:-7ff5</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2023-12-10 10:10:08.883 UTC</dateCreated>
+</layer>

@@ -1,0 +1,17 @@
+<layer>
+  <name>highway-bremen</name>
+  <id>LayerInfoImpl--7eaa08ab:18c53219bbe:-47e9</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--7eaa08ab:18c53219bbe:-47e8</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--7eaa08ab:18c53219bbe:-47ea</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2023-12-10 12:36:35.286 UTC</dateCreated>
+  <dateModified>2023-12-28 01:12:58.189 UTC</dateModified>
+</layer>

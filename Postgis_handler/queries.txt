@@ -1,0 +1,23 @@
+
+
+INSERT INTO air_quality (co_level, pm25_level, no2_level, nh3_level, longitude, latitude, geom)
+VALUES
+(100, 150, 150, 150, 8.833605, 53.079536, ST_SetSRID(ST_Point(8.833605, 53.079536), 4326));
+
+
+UPDATE "highway-bremen" AS h
+SET 
+    co_level = a.co_level,
+    pm25_level = a.pm25_level,
+    no2_level = a.no2_level,
+    nh3_level = a.nh3_level
+FROM air_quality AS a
+WHERE ST_DWithin(h.geom::geography, a.geom::geography, 1000);
+
+
+UPDATE "highway-bremen"
+SET co_level = 150,
+    pm25_level = 150,
+    no2_level = 150,
+    nh3_level = 150;
+
