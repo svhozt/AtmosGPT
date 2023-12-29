@@ -1,19 +1,6 @@
 
 # AtmosGPT
 
-
-
-               _                                _____   _____    _______ 
-       /\     | |                              / ____| |  __ \  |__   __|
-      /  \    | |_   _ __ ___     ___    ___  | |  __  | |__) |    | |   
-     / /\ \   | __| | '_ ` _ \   / _ \  / __| | | |_ | |  ___/     | |   
-    / ____ \  | |_  | | | | | | | (_) | \__ \ | |__| | | |         | |   
-   /_/    \_\  \__| |_| |_| |_|  \___/  |___/  \_____| |_|         |_|   
-                                                                         
-
-
-                                                                 
-
 ## Overview
 
 AtmosGPT is a comprehensive project dedicated to monitoring and analyzing air quality. By integrating cutting-edge technologies such as PostgreSQL with PostGIS and pgRouting, Neo4j for graph database management, MQTT for IoT data handling, and GeoServer for geospatial data visualization, AtmosGPT offers a robust solution for environmental data assessment and visualization.
