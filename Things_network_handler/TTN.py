@@ -84,11 +84,11 @@ def on_message(client, userdata, msg):
                 co_level, pm25_level, no2_level, nh3_level = air_quality_data[i:i+4]
                 latitude, longitude = gps_coords
                 print(f"Device ID: {device_id}, Time: {time_received}, CO: {co_level}, PM2.5: {pm25_level}, NO2: {no2_level}, NH3: {nh3_level}, Lat: {latitude}, Long: {longitude}")
-
+                logging.info(f"Device ID: {device_id}, Time: {time_received}, CO: {co_level}, PM2.5: {pm25_level}, NO2: {no2_level}, NH3: {nh3_level}, Lat: {longitude}, Long: {latitude}")
                 # Insert data into the PostgreSQL database
                 try:
                     insert_query = "INSERT INTO raw_data_2 (device_id, time_received, co_level, pm25_level, no2_level, nh3_level, latitude, longitude) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
-                    cursor.execute(insert_query, (device_id, time_received, co_level, pm25_level, no2_level, nh3_level, latitude, longitude))
+                    cursor.execute(insert_query, (device_id, time_received, co_level, pm25_level, no2_level, nh3_level, longitude, latitude))
                     conn.commit()
                 except Exception as e:
                     print("Error inserting data:", e)
