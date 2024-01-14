@@ -4,10 +4,10 @@ import os
 # Load environment variables
 uri = os.getenv('NEO4J_URI', 'neo4j://localhost:7687')
 neo4j_user = os.getenv('NEO4J_USER', 'neo4j')
-neo4j_password = os.getenv('NEO4J_PASSWORD', 'default_password')
+neo4j_password = os.getenv('NEO4J_PASSWORD', '12Wuw4Bbi8')
 
 # Neo4j connection settings
-neo4j_driver = GraphDatabase.driver(uri, auth=(neo4j_user, neo4j_password))
+driver = GraphDatabase.driver(uri, auth=(neo4j_user, neo4j_password))
 
 
 def find_nearest_node(driver, latitude, longitude):
